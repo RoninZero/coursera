@@ -6,23 +6,31 @@ import re
 import urllib
 from BeautifulSoup import *
 
-url = raw_input('Enter - ')
+#url = 'http://pr4e.dr-chuck.com/tsugi/mod/python-data/data/known_by_Fikret.html'
+url = 'http://pr4e.dr-chuck.com/tsugi/mod/python-data/data/known_by_Rishi.html'
+
 html = urllib.urlopen(url).read()
 
 soup = BeautifulSoup(html)
 
 # Retrieve all of the anchor tags
 #tags = soup('a')
-sum = 0
-tags = soup('span')
+tags = soup('a')
+print "TAGS", tags
 for tag in tags:
    # Look at the parts of a tag
    print 'TAG:',tag
    print 'URL:',tag.get('href', None)
    print 'Contents:',tag.contents[0]
    print 'Attrs:',tag.attrs
-   #value = re.findall('[0-9]+', tag)
-   sum += int(tag.contents[0])
 
+print "tags[2]:", tags[2]
 
-print "Sum:", sum
+print "Name:", url
+for i in xrange(7):
+   #print "Inner Name:", url
+   html = urllib.urlopen(url).read()
+   soup = BeautifulSoup(html)
+   tags = soup('a')
+   url = tags[17].get('href', None)
+   print "Name:", url
