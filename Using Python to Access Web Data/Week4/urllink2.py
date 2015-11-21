@@ -21,6 +21,8 @@ for tag in tags:
    print 'URL:',tag.get('href', None)
    print 'Contents:',tag.contents[0]
    print 'Attrs:',tag.attrs
-   value = 1
+   #value = re.findall('[0-9]+', tag)
+   sum += int(tag.contents[0])
+
 
 print "Sum:", sum
